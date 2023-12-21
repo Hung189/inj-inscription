@@ -1,0 +1,30 @@
+{
+  "name": "lattebot",
+  "version": "1.0.0",
+  "main": "index.js",
+  "node": "^14.13.1",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "nodemon",
+    "build": "rimraf ./build && tsc",
+    "start": "npm run build && node build/index.js",
+    "copy": "scp -i D:/aws/privkey.pem D:/Projects/lattebot/src/index.ts ubuntu@ec2-54-151-146-142.ap-southeast-1.compute.amazonaws.com:/home/ubuntu/bot/src"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@injectivelabs/networks": "^1.14.4",
+    "@injectivelabs/sdk-ts": "^1.14.4",
+    "@injectivelabs/ts-types": "^1.14.4",
+    "ethers": "^5.7.2"
+  },
+  "devDependencies": {
+    "@types/node": "^16.11.10",
+    "nodemon": "^2.0.15",
+    "rimraf": "^3.0.2",
+    "ts-node": "^10.4.0",
+    "typescript": "^4.5.2"
+  },
+  "keywords": [],
+  "description": ""
+}
