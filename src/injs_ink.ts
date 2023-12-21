@@ -25,27 +25,27 @@ import {
 // !!!! CHÚ Ý !!!!
 // THAY BẰNG LIST PRIVATE KEY Ở ĐÂY CÁI NÀY CỨ TẠO VÍ Ở METAMASK
 // XONG IMPORT VÀO VÍ Keplr LÀ ĐƯỢC
+// CÓ THỂ ĐIỀN NHIỀU VÍ VÀO ĐÂY
 const privateKeyHashs = [
-  "ethereum wallet private key",
+  "ethereum wallet private key 1",
+  "ethereum wallet private key 2",
+  "ethereum wallet private key 3",
 ];
 
 // !!!! CHÚ Ý !!!!
-// MUỐN MỖI VÍ MINT MẤY LẦN THÌ THAY SỐ VÀO ĐÂY
+// MUỐN MỖI VÍ MINT MẤY LẦN THÌ THAY SỐ VÀO ĐÂY TỐI THIỂU LÀ 1
 const mintPerWallet = 1;
 
 // CÁC THÔNG TIN Ở DƯỚI NÀY CHECK WEB NẾU KHÔNG ĐỔI THÌ KHÔNG CẦN SỬA, https://docs.injs.ink/mint-injs
 
-// Gửi đến địa chỉ ví
-// Đang lấy thông tin ở link này https://docs.injs.ink/mint-injs
-// Kiểm tra lại, nếu không đổi thì không cần sửa
-const dstInjectiveAddress = "inj15jy9vzmyy63ql9y6dvned2kdat2994x5f4ldu4";
 // https://docs.injs.ink/mint-injs
-const memo = `ZGF0YToseyJwIjoiaW5qcmMtMjAiLCJvcCI6Im1pbnQiLCJ0aWNrIjoiSU5KUyIsImFtdCI6IjIwMDAifQ==`;
+const memo = `ZGF0YToseyJwIjoiaW5qcmMtMjAiLCJvcCI6Im1pbnQiLCJ0aWNrIjoiSU5KUyIsImFtdCI6IjEwMDAifQ==`;
 // https://docs.injs.ink/mint-injs
-const value = 0.03;
+const value = 0.0000000001;
 
-const chainId: any = ChainId.Mainnet; // ChainId.Testnet;
-const networkId: any = Network.Mainnet; // Network.Testnet;
+// NẾU MUỐN CHẠY MAINNET THÌ ĐỔI 2 DÒNG DƯỚI
+const chainId: any = ChainId.Testnet; // ChainId.Mainnet; //
+const networkId: any = Network.Testnet; // Network.Mainnet; //
 
 async function main() {
   try {
@@ -62,6 +62,7 @@ async function main() {
       amount: new BigNumberInBase(value).toWei().toFixed(),
       denom: "inj",
     };
+
     for (let i = 0; i < privateKeyHashs.length; i++) {
       const privateKeyHash = privateKeyHashs[i];
       const privateKey = PrivateKey.fromHex(privateKeyHash);
@@ -71,9 +72,8 @@ async function main() {
       const msg = MsgSend.fromJSON({
         amount,
         srcInjectiveAddress: injectiveAddress,
-        dstInjectiveAddress,
+        dstInjectiveAddress: injectiveAddress,
       });
-
       for (let j = 0; j < mintPerWallet; j++) {
         console.log(`Mint ${injectiveAddress} lần thứ ${j + 1} `);
 
