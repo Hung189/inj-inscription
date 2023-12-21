@@ -44,8 +44,8 @@ const memo = `ZGF0YToseyJwIjoiaW5qcmMtMjAiLCJvcCI6Im1pbnQiLCJ0aWNrIjoiSU5KUyIsIm
 const value = 0.0000000001;
 
 // NẾU MUỐN CHẠY MAINNET THÌ ĐỔI 2 DÒNG DƯỚI
-const chainId: any = ChainId.Testnet; // ChainId.Mainnet; //
-const networkId: any = Network.Testnet; // Network.Mainnet; //
+const chainId: any = ChainId.Mainnet; // ChainId.Mainnet; //
+const networkId: any = Network.Mainnet; // Network.Mainnet; //
 
 async function main() {
   try {
